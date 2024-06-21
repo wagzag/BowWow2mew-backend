@@ -21,7 +21,7 @@ router.post('/signup', async (req, res) => {
     await user.save();
     res.status(201).json({ message: '회원가입 성공', email: user.email });
   } catch (err) {
-    res.status(400).json({ error: '회원가입 실패' });
+    res.status(400).json({ error: err });
   }
 });
 
@@ -30,20 +30,23 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
-    if (!user || !await bcrypt.compare(password, user.password)) {
+    if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(400).json({ error: '로그인 실패' });
     }
-    const token = jwt.sign({ email: user.email }, JWT_SECRET, { expiresIn: '1h' });
-    res.json({ token });
+    const token = jwt.sign({ email: user.email }, JWT_SECRET, {
+      expiresIn: '1h',
+    });
+    res.cookie('token', token, { httpOnly: true, secure: true, maxAge: 3600000 }); // 쿠키 설정
+    res.json({ message: '로그인 성공' });
   } catch (err) {
-    res.status(400).json({ error: '로그인 실패' });
+    res.status(400).json({ error: err });
   }
 });
 
 // 보호된 라우트 예시
 router.get('/protected', (req, res) => {
-  const token = req.headers['authorization']?.split(' ')[1];
-  
+  const token = req.cookies.token; // 쿠키에서 토큰 읽기
+
   if (!token) {
     return res.status(401).json({ error: '인증 토큰이 필요합니다.' });
   }
@@ -52,7 +55,7 @@ router.get('/protected', (req, res) => {
     const decoded = jwt.verify(token, JWT_SECRET);
     res.json({ message: '보호된 데이터 접근 성공', data: decoded });
   } catch (err) {
-    res.status(401).json({ error: '유효하지 않은 토큰입니다.' });
+    res.status(401).json({ error: err });
   }
 });
 
