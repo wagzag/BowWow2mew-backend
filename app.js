@@ -9,10 +9,10 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// 몽고디비 연결
+// MongoDB 연결
 mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('connected to mongodb...'))
+  .connect(MONGO_URI)
+  .then(() => console.log('connected to mongodb...')) // 필요시 console.log 사용 허용
   .catch(err => console.error(err));
 
 // 라우터 설정
@@ -26,5 +26,5 @@ app.get('/', (req, res) => {
 
 // 서버 시작
 app.listen(PORT, () => {
-  console.log(`app listening on port ${PORT}...`);
+  console.log(`app listening on port ${PORT}...`); // 필요시 console.log 사용 허용
 });
