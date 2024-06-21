@@ -30,10 +30,12 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
-    if (!user || !await bcrypt.compare(password, user.password)) {
+    if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(400).json({ error: '로그인 실패' });
     }
-    const token = jwt.sign({ email: user.email }, JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ email: user.email }, JWT_SECRET, {
+      expiresIn: '1h',
+    });
     res.json({ token });
   } catch (error) {
     res.status(400).json({ error: '로그인 실패' });
