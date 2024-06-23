@@ -3,9 +3,9 @@ async function getShortId() {
   return {
     type: String,
     default: () => nanoid(),
-    require: true,
+    required: true,
     index: true,
   };
 }
 
-module.exports = getShortId;
+module.exports = getShortId();

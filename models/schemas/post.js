@@ -1,9 +1,9 @@
-const mongoose = require('mongoose'); // mongoose 모듈을 임포트합니다.
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const getShortId = require('./types/short-id'); // shortId 함수를 가져옵니다.
 
 async function createPostSchema() {
-  const shortId = await getShortId();
+  const shortId = await getShortId;
 
   const PostSchema = new Schema(
     {
@@ -33,7 +33,7 @@ async function createPostSchema() {
     },
   );
 
-  return PostSchema;
+  return mongoose.model('Post', PostSchema);
 }
 
 module.exports = createPostSchema;
