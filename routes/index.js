@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/schemas/User'); // 상대 경로 수정
+const postsRouter = require('./posts');
 
 const router = express.Router();
 
@@ -59,5 +60,8 @@ router.get('/protected', (req, res) => {
       .json({ error: err }, { message: '유효하지 않은 토큰입니다.' });
   }
 });
+
+//post 라우터 사용
+router.use('/posts',postsRouter);
 
 module.exports = router;
