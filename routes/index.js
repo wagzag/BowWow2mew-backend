@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User'); // 상대 경로 수정
+const User = require('../models/schemas/User'); // 상대 경로 수정
 
 const router = express.Router();
 
