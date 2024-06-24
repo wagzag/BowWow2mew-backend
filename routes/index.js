@@ -3,7 +3,10 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/schemas/User'); // 상대 경로 수정
 const freeboardRouter = require('./freeboard'); // 자유게시판 라우터 임포트
-
+const recommendationsRouter = require('./recommendations');
+const boastsRouter = require('./boasts');
+const adoptionRouter = require('./adoption');
+const questionsRouter = require('./questions');
 
 const router = express.Router();
 
@@ -64,6 +67,10 @@ router.get('/protected', (req, res) => {
 
 // 게시판 라우터 사용
 router.use('/freeboard', freeboardRouter); // 자유게시판 라우터 사용
+router.use('/recommend', recommendationsRouter);
+router.use('/boasts', boastsRouter);
+router.use('/adoption', adoptionRouter);
+router.use('/questions', questionsRouter);
 
 
 module.exports = router;

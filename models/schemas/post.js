@@ -33,7 +33,7 @@ async function createPostSchema() {
     },
   );
 
-  return mongoose.model('Post', PostSchema);
+  return mongoose.models.Post || mongoose.model('Post', PostSchema);
 }
 
 module.exports = createPostSchema;

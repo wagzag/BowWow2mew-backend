@@ -9,7 +9,7 @@ createPostSchema().then(Post => {
     const { title, content, userId } = req.body;
     try {
       const userObjectId = mongoose.Types.ObjectId(userId);
-      const newPost = new Post({ title, content, user: userObjectId, category: '자유게시판' });
+      const newPost = new Post({ title, content, user: userObjectId, category: '추천place' });
       await newPost.save();
       res.status(201).json(newPost);
     } catch (err) {
@@ -20,7 +20,7 @@ createPostSchema().then(Post => {
   // READ - 특정 카테고리의 게시물 조회
   router.get('/', async (req, res) => {
     try {
-      const posts = await Post.find({ category: '자유게시판' }).populate('user', 'name');
+      const posts = await Post.find({ category: '추천place' }).populate('user', 'name');
       res.json(posts);
     } catch (err) {
       res.status(400).json({ error: err.message });

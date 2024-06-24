@@ -5,15 +5,18 @@ const mongoose = require('mongoose');
 const app = express();
 const { PORT, MONGO_URI } = process.env;
 
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 // MongoDB 연결
 mongoose
   .connect(MONGO_URI)
   .then(() => console.log('connected to mongodb...')) // 필요시 console.log 사용 허용
   .catch(err => console.error(err));
 
-app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+require('./models/schemas/post');
+require('./models/schemas/User');
 
 const routes = require('./routes');
 app.use('/', routes);
