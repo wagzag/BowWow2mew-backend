@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/schemas/User'); // 상대 경로 수정
 
-const apiRouter = require('./api');
+const commentRouter = require('./comment');
 
 const router = express.Router();
 
@@ -60,5 +60,5 @@ router.get('/protected', (req, res) => {
   }
 });
 
-router.use('/', apiRouter);
+router.use('/comments', commentRouter);
 module.exports = router;

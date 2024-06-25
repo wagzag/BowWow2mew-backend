@@ -5,11 +5,14 @@ const CommentSchema = new Schema(
   {
     commentId: shortId,
     content: String,
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
+    userName: {
+      type: String,
+      required: true,
     },
-    postId: String,
+    postId: {
+      type: String,
+      required: true,
+    },
     category: {
       type: String,
       required: true,
