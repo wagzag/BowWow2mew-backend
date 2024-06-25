@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const getShortId = require('./types/short-id'); // shortId 함수를 가져옵니다.
+const getShortId = require('./types/short-id'); // shortId 함수
+const moment = require('moment'); // 날짜 형식화를 위해 moment.js 사용
 
 async function createPostSchema() {
   const shortId = await getShortId;
@@ -16,16 +17,18 @@ async function createPostSchema() {
         type: String,
         required: true,
       },
-      user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
+      userName: {
+        type: String,
         required: true,
-        index: true,
+      },
+      createdAt: {
+        type: String,
+        default: () => moment().format('YYYY-MM-DD HH:mm'),
       },
       category: {
         type: String,
         required: true,
-        enum: ['자유게시판', '입양/임시보호', '고민해결소', '자랑게시판', '추천place'],
+        enum: ['freeboard', 'adoption', 'questions', 'boasts', 'recommend'],
       },
     },
     {

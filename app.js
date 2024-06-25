@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-
+const path = require('path'); 
 const app = express();
 const { PORT, MONGO_URI } = process.env;
 
@@ -22,11 +22,16 @@ const routes = require('./routes');
 app.use('/', routes);
 
 // 루트 경로 핸들러 추가
-app.get('/', (req, res) => {
-  res.send('Welcome to the API');
-});
+  // app.get('/', (req, res) => {
+  //   res.send('Welcome to the API');
+  // });
 
 // 서버 시작
 app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}...`); // 필요시 console.log 사용 허용
 });
+
+app.use(express.static(path. join(__dirname, 'BowWow2mew-frontend/build')));
+app.get('/',function(요청,응답){
+  응답.sendfile(path.join(__dirname,'BowWow2mew-frontend/build/index.html'))
+})

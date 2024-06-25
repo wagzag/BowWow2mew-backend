@@ -41,7 +41,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ email: user.email }, JWT_SECRET, {
       expiresIn: '1h',
     });
-    res.json({ token });
+    res.json({ token , userId: user._id}); // userId를 응답에 포함
   } catch (err) {
     res.status(400).json({ error: err }, { message: '로그인 실패' });
   }
