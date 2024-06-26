@@ -2,6 +2,11 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/schemas/User'); // 상대 경로 수정
+const freeboardRouter = require('./freeboard'); // 자유게시판 라우터 임포트
+const recommendRouter = require('./recommend');
+const boastsRouter = require('./boasts');
+const adoptionRouter = require('./adoption');
+const questionsRouter = require('./questions');
 
 const commentRouter = require('./comment');
 
@@ -38,7 +43,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ email: user.email }, JWT_SECRET, {
       expiresIn: '1h',
     });
-    res.json({ token });
+    res.json({ token , userId: user._id}); // userId를 응답에 포함
   } catch (err) {
     res.status(400).json({ err, message: '로그인 실패' });
   }
@@ -60,5 +65,16 @@ router.get('/protected', (req, res) => {
   }
 });
 
+<<<<<<< feat/board
+// 게시판 라우터 사용
+router.use('/freeboard', freeboardRouter); // 자유게시판 라우터 사용
+router.use('/recommend', recommendRouter);
+router.use('/boasts', boastsRouter);
+router.use('/adoption', adoptionRouter);
+router.use('/questions', questionsRouter);
+
+
+=======
 router.use('/comments', commentRouter);
+>>>>>>> main
 module.exports = router;
