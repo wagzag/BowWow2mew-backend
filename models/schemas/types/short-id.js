@@ -1,11 +1,12 @@
-async function getShortId() {
-  const { nanoid } = await import('nanoid');
-  return {
-    type: String,
-    default: () => nanoid(),
-    required: true,
-    index: true,
-  };
-}
+const { nanoid } = require('nanoid');
 
-module.exports = getShortId();
+const shortId = {
+  type: String,
+  default: () => {
+    return nanoid();
+  },
+  require: true,
+  index: true,
+};
+
+exports.shortId = shortId;
