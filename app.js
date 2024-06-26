@@ -1,7 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+<<<<<<< feat/board
 const path = require('path'); 
+=======
+const routes = require('./routes');
+const cors = require('cors');
+
+>>>>>>> main
 const app = express();
 const { PORT, MONGO_URI } = process.env;
 
@@ -15,11 +21,16 @@ mongoose
   .then(() => console.log('connected to mongodb...')) // 필요시 console.log 사용 허용
   .catch(err => console.error(err));
 
+<<<<<<< feat/board
 require('./models/schemas/post');
 require('./models/schemas/User');
 
 const routes = require('./routes');
 app.use('/', routes);
+=======
+app.use(cors({ origin: '*' }));
+app.use('/api', routes);
+>>>>>>> main
 
 // 루트 경로 핸들러 추가
   // app.get('/', (req, res) => {

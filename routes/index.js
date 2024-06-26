@@ -8,6 +8,8 @@ const boastsRouter = require('./boasts');
 const adoptionRouter = require('./adoption');
 const questionsRouter = require('./questions');
 
+const commentRouter = require('./comment');
+
 const router = express.Router();
 
 // JWT 시크릿 키
@@ -26,7 +28,7 @@ router.post('/signup', async (req, res) => {
     await user.save();
     res.status(201).json({ message: '회원가입 성공', email: user.email });
   } catch (err) {
-    res.status(400).json({ error: err }, { message: '회원가입 실패' });
+    res.status(400).json({ error: err, message: '회원가입 실패' });
   }
 });
 
@@ -43,7 +45,7 @@ router.post('/login', async (req, res) => {
     });
     res.json({ token , userId: user._id}); // userId를 응답에 포함
   } catch (err) {
-    res.status(400).json({ error: err }, { message: '로그인 실패' });
+    res.status(400).json({ err, message: '로그인 실패' });
   }
 });
 
@@ -59,12 +61,11 @@ router.get('/protected', (req, res) => {
     const decoded = jwt.verify(token, JWT_SECRET);
     res.json({ message: '보호된 데이터 접근 성공', data: decoded });
   } catch (err) {
-    res
-      .status(401)
-      .json({ error: err }, { message: '유효하지 않은 토큰입니다.' });
+    res.status(401).json({ error: err, message: '유효하지 않은 토큰입니다.' });
   }
 });
 
+<<<<<<< feat/board
 // 게시판 라우터 사용
 router.use('/freeboard', freeboardRouter); // 자유게시판 라우터 사용
 router.use('/recommend', recommendRouter);
@@ -73,4 +74,7 @@ router.use('/adoption', adoptionRouter);
 router.use('/questions', questionsRouter);
 
 
+=======
+router.use('/comments', commentRouter);
+>>>>>>> main
 module.exports = router;
