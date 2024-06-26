@@ -1,6 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const routes = require('./routes');
+const cors = require('cors');
 
 const app = express();
 const { PORT, MONGO_URI } = process.env;
@@ -15,9 +17,8 @@ mongoose
   .then(() => console.log('connected to mongodb...')) // 필요시 console.log 사용 허용
   .catch(err => console.error(err));
 
-// 라우터 설정
-const routes = require('./routes');
-app.use('/', routes);
+app.use(cors({ origin: '*' }));
+app.use('/api', routes);
 
 // 루트 경로 핸들러 추가
 app.get('/', (req, res) => {
