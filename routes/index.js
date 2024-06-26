@@ -65,7 +65,6 @@ router.get('/protected', (req, res) => {
   }
 });
 
-<<<<<<< feat/board
 // 게시판 라우터 사용
 router.use('/freeboard', freeboardRouter); // 자유게시판 라우터 사용
 router.use('/recommend', recommendRouter);
@@ -74,7 +73,5 @@ router.use('/adoption', adoptionRouter);
 router.use('/questions', questionsRouter);
 
 
-=======
 router.use('/comments', commentRouter);
->>>>>>> main
 module.exports = router;

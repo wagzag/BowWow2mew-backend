@@ -23,7 +23,7 @@ require('./models/schemas/User');
 
 //app.use('/', routes);
 app.use(cors({ origin: '*' }));
-app.use('/api', routes)
+app.use('/api', routes);
 
 // 루트 경로 핸들러 추가
   // app.get('/', (req, res) => {
