@@ -25,7 +25,7 @@
 ## Team
 |<img src="https://avatars.githubusercontent.com/u/15326450?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/172516678?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/10623507?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/127826452?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/76502911?v=4" width="150" height="150"/>|
 |:-:|:-:|:-:|:-:|:-:|
-|팀장님<br/>Frontend<br/>[@Dagyeong](https://github.com/Dagyeong)|Frontend<br/>[@KimChaeYeon0](https://github.com/KimChaeYeon0)|Backend<br/>[@eunyeong](https://github.com/eunyeong)|Backend<br/>[@yihimin](https://github.com/yihimin)|Frontend<br/>Backend<br/>[@yoon-gang00](https://github.com/yoon-gang00)|
+|팀장님<br/>Frontend<br/>[@Dagyeong](https://github.com/Jeong-Dagyeong)|Frontend<br/>[@KimChaeYeon0](https://github.com/KimChaeYeon0)|Backend<br/>[@eunyeong](https://github.com/jjangeunyeong)|Backend<br/>[@yihimin](https://github.com/yihimin)|Frontend<br/>Backend<br/>[@yoon-gang00](https://github.com/yoon-gang00)|
 
 ## 피그마 
 [wagzag-figma-link](https://www.figma.com/design/B8ARSxqs9pJSA8tqXIpZm1/Wagzag?t=sJx5BfBJTKvMZxM6-1)
