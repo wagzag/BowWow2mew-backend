@@ -1,7 +1,6 @@
 # 멍멍냥냥
-
-<img width="325" alt="스크린샷 2024-06-27 오후 4 48 16" src="https://github.com/wagzag/BowWow2mew-frontend/assets/76502911/e764ad14-a215-40a3-bb59-08ee701c88f0">
-
+<img width="909" alt="스크린샷 2024-06-27 오후 5 39 34" src="https://github.com/wagzag/BowWow2mew-frontend/assets/76502911/372e4b9f-6098-45f8-ad2a-c371b93ddb47">
+<img width="910" alt="스크린샷 2024-06-27 오후 5 39 40" src="https://github.com/wagzag/BowWow2mew-frontend/assets/76502911/84ddbd86-6a8d-4a5b-bf32-a280c0026441">
 
 ## 소개
 **멍멍냥냥**은 반려동물 커뮤니티 웹 애플리케이션입니다. 사용자들은 반려동물 사진을 공유하고, 입양 및 임시보호 정보를 교환하며, 다양한 반려동물 관련 이슈에 대해 토론할 수 있습니다.
